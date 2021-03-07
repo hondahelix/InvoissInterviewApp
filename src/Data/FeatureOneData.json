@@ -1,0 +1,57 @@
+{
+    "businesses":
+        {
+            "id": "VPXezwmTETrwitrzj9BZPA",
+            "alias": "dumpling-time-san-francisco",
+            "name": "Dumpling Time",
+            "image_url": "https://s3-media0.fl.yelpcdn.com/bphoto/LpVJS1JQ5thyPRCT99mMCQ/o.jpg",
+            "is_closed": false,
+            "url": "https://www.yelp.com/biz/dumpling-time-san-francisco?adjust_creative=h4SYj-iJQa0vIujKBtsBQA&utm_campaign=yelp_api_v3&utm_medium=api_v3_phone_search&utm_source=h4SYj-iJQa0vIujKBtsBQA",
+            "review_count": 2043,
+            "categories": [
+                {
+                    "alias": "dimsum",
+                    "title": "Dim Sum"
+                },
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                }
+            ],
+            "rating": 4.0,
+            "coordinates": {
+                "latitude": 37.7697533,
+                "longitude": -122.4022546
+            },
+            "transactions": [
+                "pickup",
+                "delivery"
+            ],
+            "price": "$$",
+            "location": {
+                "address1": "11 Division St",
+                "address2": "",
+                "address3": null,
+                "city": "San Francisco",
+                "zip_code": "94103",
+                "country": "US",
+                "state": "CA",
+                "display_address": [
+                    "11 Division St, ",
+                    "San Francisco, CA 94103"
+                ]
+            },
+            "phone": "+14155254797",
+            "display_phone": "(415) 525-4797"
+        }
+    ,
+    "total": 1,
+    "menu": [
+        "Picked For You",
+        "Quick Bites",
+        "Veggies",
+        "Seafood",
+        "Xiao Long Bao (Soup Dumpling)"
+    ]
+
+}
