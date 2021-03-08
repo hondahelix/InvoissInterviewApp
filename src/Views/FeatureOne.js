@@ -14,7 +14,7 @@ const style = StyleSheet.create({
         position: 'absolute',
         left: 0,
         right: 0,
-        flex:1,
+        flex:2,
         height: 130,
         zIndex: 10,
         backgroundColor: 'white',
@@ -27,8 +27,11 @@ const style = StyleSheet.create({
     navSection:{
         marginLeft: 10,
         padding: 10,
+
+    },
+    navWrapper:{
         position: 'relative',
-        backgroundColor: 'red'
+        top: 45,
     },
     storeInfo:{
         fontSize: 15,
@@ -73,7 +76,8 @@ const FeatureOne = ({ navigation }) => {
         else if(e.nativeEvent.contentOffset.y<50 && yState===false){
             setYState(true);
         }
-        setToMove(500/(2750/((e.nativeEvent.contentOffset.y+1) +1))); //->+1 to make sure not undefinded
+        // one for other direction
+        setToMove(500/(2250/((e.nativeEvent.contentOffset.y+1) +1))); //->+1 to make sure not undefinded
         // use pan 
         moveSlide();
         
@@ -94,14 +98,15 @@ const FeatureOne = ({ navigation }) => {
             />
             : <View style ={style.nav}> 
                 <Text style={style.bar}>Dumpling Time</Text>
-                    <Animated.Text numberOfLines={1} style={{
-                        transform: [{translateX: slide}]
-                    }}>{data.menu.map((item, index)=>
-                        <View style={style.navSection}>
-                            <Text key = {index}>{item}</Text>
-                        </View>
-                    
-                    )}</Animated.Text>
+                    <View style={style.navWrapper}>
+                        <Animated.Text numberOfLines={1} style={ {flexWrap: 'wrap'}, {transform: [{translateX: slide}]}
+                                }>{data.menu.map((item, index)=>
+                            <View style = {style.navSection}>
+                                <Text key = {index}>{item}</Text>
+                            </View>
+                        
+                        )}</Animated.Text>
+                    </View>
             </View>
             }
             <View>
