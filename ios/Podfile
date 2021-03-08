@@ -5,10 +5,12 @@ platform :ios, '10.0'
 
 target 'InvoissInterviewApp' do
   config = use_native_modules!
-  permissions_path = '../node_modules/react-native-permissions/ios'
-  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
 
   use_react_native!(:path => config["reactNativePath"])
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
   target 'InvoissInterviewAppTests' do
     inherit! :complete
