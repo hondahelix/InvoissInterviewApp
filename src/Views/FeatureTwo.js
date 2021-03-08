@@ -1,41 +1,58 @@
 import React from 'react';
-import { Text, View, TextInput, KeyboardAvoidingView, FlatList, Platform} from 'react-native';
+import { Text, View, Image, TextInput, KeyboardAvoidingView, FlatList, Platform, Dimensions} from 'react-native';
 import { FeatureTwoStyles as styles } from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-//import data from '../Data/FeatureTwoData.json';
+import ImagePicker from 'react-native-image-picker';
+
 
 const FeatureTwo = ({ navigation }) => {
     const [content, setContent] = React.useState([]);
-    const [message, setMessage] = React.useState([]);
+    const [message, setMessage] = React.useState('');
+    const windowHeight = Dimensions.get('window').height;
     const handleText = (e) =>{
         setContent([...content, {type: 'text', content: message}]);
     }
-    const handleContent = (e) =>{
-        CameraRoll.getPhotos({
-            first: 20,
-            assetType: 'Photos',
-          })
-          .then(r => {
-            this.setState({ photos: r.edges });
-          })
-          .catch((err) => {
-             //Error Loading Images
-          });
+    const handleContent =  (e) =>{
+        let options = {
+            title: 'You can choose one image',
+            mediaType: 'photo',
+            maxWidth: 256,
+            maxHeight: 256,
+            storageOptions: {
+              skipBackup: true
+            }
+          };
+          ImagePicker.showImagePicker({mediaType: 'photo'}, (response) =>{
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+              } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+              } else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+              } else {
+                const source = { uri: response.uri };
+                console.log(source)
+                //setContent([...content, {type: 'photo', content: source.uri}]);
+            }
+        });
     }
     return (
          <View style={styles.MainContainer}>
             <KeyboardAvoidingView
                 behavior={Platform.OS == 'ios'?"padding":'height'}
-                keyboardVerticalOffset={100}
                 style={{width:'100%'}}
             >
-                <FlatList
-                    data = {content}
-                    renderItem = {({item, index}) => 
-                        <>
-                        {item.type==="text" && <Text style = {styles.message} key = {index}>{item.content}</Text>}
-                        </>
-                    }/>
+                <View style={{width:'100%', height:windowHeight-200}}>
+                    <FlatList
+
+                        data = {content}
+                        renderItem = {({item, index}) => 
+                            <>
+                            {item.type==="text" && <Text style = {styles.message} key = {index}>{item.content}</Text>}
+                            {item.type==="photo" && <Image style = {styles.photo} key = {index} source={{uri:item.content}}></Image>}
+                            </>
+                        }/>
+                </View>
             <View style = {styles.textBar}>
                     <TextInput 
                     placeholder = "Jot something down"

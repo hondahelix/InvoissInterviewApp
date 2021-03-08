@@ -9,7 +9,6 @@ const FeatureOne = ({ navigation }) => {
     const [yState, setYState] = React.useState(true);
     const slide = React.useState(new Animated.Value(0))[0];
     const moveSlide = () =>{
-        console.log(toMove)
         Animated.timing(slide,{
             // see if i can set it to -toMove
             toValue: -toMove,

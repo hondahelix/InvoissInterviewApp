@@ -73,9 +73,12 @@ const FeatureTwoStyles = StyleSheet.create({
     textBar:{
         backgroundColor: 'black',
         width: '100%',
+        height: 80,
         borderTopColor: 'white',
         borderWidth: .25,
         borderStyle: 'solid',
+        position: 'absolute',
+        bottom: '0%',
     },
     textInput:{
         color: '#FFFFFF',
@@ -84,6 +87,12 @@ const FeatureTwoStyles = StyleSheet.create({
         textShadowColor: 'white',
         fontSize: 15,
         padding: 10,
+
+        
+    },
+    photo:{
+        width: '75%',
+        height: '65%'
     },
     message:{
         color: "white",
